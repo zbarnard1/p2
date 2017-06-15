@@ -1,0 +1,33 @@
+/* This is the stylesheet for Project 2 - Javascript Matching Game */
+
+/* Global */
+* {
+  box-sizing: border-box;
+}
+
+/* Header */
+h1, p {
+  text-align: center;
+}
+
+/* Instructions */
+
+/* Main Game Window */
+
+#gameBox {
+  border: red solid 20px;
+  min-height: 500px;
+  width: 500px;
+  margin: auto;
+}
+
+#gameBox div{
+  border: blue solid 10px;
+  float:left;
+  display: inline-block;
+}
+
+.tile2 {
+  border: green solid 10px;
+  float: left;
+}
