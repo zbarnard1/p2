@@ -16,18 +16,26 @@ h1, p {
 
 #gameBox {
   border: red solid 20px;
-  min-height: 500px;
+  height: 500px;
   width: 500px;
   margin: auto;
+  box-sizing: content-box;
+  padding: 10px;
 }
 
 #gameBox div{
   border: blue solid 10px;
   float:left;
   display: inline-block;
+  width: 105px;
+  height: 105px;
+  text-align: center;
+  font-size: 75px;
+  margin: 10px;
 }
 
-.tile2 {
-  border: green solid 10px;
-  float: left;
+#gamebox text{
+  color: blue;
 }
+
+

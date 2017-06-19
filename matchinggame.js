@@ -6,7 +6,7 @@
   //tile x
   //tile y
   //tile size (constant, they're square)
-  //tile back imagem, eventually 
+  //tile back image, eventually 
 */
 
 //this function builds the tiles, 

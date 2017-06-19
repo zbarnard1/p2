@@ -15,13 +15,16 @@
     <p> 
       This game tests your memory!  Click on a tile below to reveal the number on the tile.  Try to pair up each set of numbers in the fewest possible moves!
     </p>
-    <button onclick="makeLoop(12)">Try it</button>
+    <button onclick="makeLoop(numTiles)">Try it</button>
   </div>
     
   <div id="gameBox">
   </div>
 
-  <script>    
+  <script>
+      //The number of tiles should be an even number, obvi
+      var numTiles = 16;
+      var list = [];
       function appendToHtml (thing) {
         //this function will take whatever is passed to it and add it to the html in my game window
         var at = document.getElementById("gameBox");
@@ -30,15 +33,31 @@
       function makeLoop (n) {
         //loops to create 'n' tiles
         for ( i = 0; i < n; i++) {
-        appendToHtml(tileMake('the number'))
-      }}
+        appendToHtml(tileMake('##'));
+        }
+      }
       function tileMake (foo){
-        //returns a div element with whatever string is passed to it as the content
+        //returns a div element with whatever string is passed to it as the content, the string comes from the remove function
         //it would be nice to be able to assign this div element a class
+        //THIS NEEDS TO KILL ALL THE ELEMENTS IN THE GAMEBOX BEFORE IT RUNS
         var divi = document.createElement("div");
         var inside = document.createTextNode(foo);
         divi.appendChild(inside)
         return divi ;
+      }
+      function makeList () {
+        //Populates the list with values
+        for (var i = 1; i <= (numTiles/2); i++) {
+          list.push (i);
+          list.push (i);
+        }
+      }
+      function shuffle () {
+        list.sort(function(a, b){return 0.5 - Math.random()});
+      }
+      function pick () {
+        //returns the value of the first item on the list and returns its value
+        return list.shift();
       }
   </script>
 </body>
