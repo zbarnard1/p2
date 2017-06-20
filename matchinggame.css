@@ -34,4 +34,20 @@ h1, p {
   margin: 10px;
 }
 
+/* The animation code */
+@keyframes example{
+    0% {color: black;}
+    100%  {color: white;}
+
+}
+
+/* The element to apply the animation to */
+span {
+
+    animation-name: example;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+}
 
