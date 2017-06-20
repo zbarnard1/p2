@@ -23,7 +23,7 @@
 
   <script>
       //The number of tiles should be an even number, obvi
-      var numTiles = 16;
+      var numTiles = 4;
       var list = [];
       function restart() {
         //Launches necessary functions when the button is clicked
@@ -31,7 +31,6 @@
         makeList();
         shuffle();
         makeLoop(numTiles);
-
       }
       function appendToHtml (thing) {
         //this function will take whatever is passed to it and add it to the html in my game window
@@ -50,6 +49,7 @@
         var para = document.createElement("span");
         var inside = document.createTextNode(foo);
         divi.appendChild(para);
+        para.setAttribute("class", "initial");
         para.appendChild(inside);
         return divi ;
       }
