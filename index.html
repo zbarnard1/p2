@@ -45,12 +45,12 @@
         }
       }
       function tileMake (foo){
-        //returns a div element with whatever string is passed to it as the content, the string comes from the remove function
-        //it would be nice to be able to assign this div element a class
-        //THIS NEEDS TO KILL ALL THE ELEMENTS IN THE GAMEBOX BEFORE IT RUNS
+        //returns a div element with whatever string is passed to it as the content, the string comes from the pick function
         var divi = document.createElement("div");
+        var para = document.createElement("span");
         var inside = document.createTextNode(foo);
-        divi.appendChild(inside)
+        divi.appendChild(para);
+        para.appendChild(inside);
         return divi ;
       }
       function makeList () {
