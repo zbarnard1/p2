@@ -3,7 +3,7 @@
 <head>
   <title>Project 2 - Javascript Matching Game</title>
   <meta charset="utf-8">
-  <meta name="discription" content="tacos">
+  <meta name="discription" content="banana">
   <meta viewport="width=device-width">
   <meta name="name" content="author=Zac Barnard">
   <link rel="stylesheet" href="matchinggame.css">
@@ -15,7 +15,7 @@
     <p> 
       This game tests your memory!  Click on a tile below to reveal the number on the tile.  Try to pair up each set of numbers in the fewest possible moves!
     </p>
-    <button onclick="makeLoop(numTiles)">Try it</button>
+    <button onclick="restart()">Try it</button>
   </div>
     
   <div id="gameBox">
@@ -25,6 +25,14 @@
       //The number of tiles should be an even number, obvi
       var numTiles = 16;
       var list = [];
+      function restart() {
+        //Launches necessary functions when the button is clicked
+        kill();
+        makeList();
+        shuffle();
+        makeLoop(numTiles);
+
+      }
       function appendToHtml (thing) {
         //this function will take whatever is passed to it and add it to the html in my game window
         var at = document.getElementById("gameBox");
@@ -33,7 +41,7 @@
       function makeLoop (n) {
         //loops to create 'n' tiles
         for ( i = 0; i < n; i++) {
-        appendToHtml(tileMake('##'));
+        appendToHtml(tileMake(pick()));
         }
       }
       function tileMake (foo){
@@ -53,11 +61,25 @@
         }
       }
       function shuffle () {
+        //Shuffles the values in the list array
         list.sort(function(a, b){return 0.5 - Math.random()});
       }
       function pick () {
         //returns the value of the first item on the list and returns its value
         return list.shift();
+      }
+      function kill () {
+        //Deletes the divs in the gameBox
+        document.getElementById("gameBox").innerHTML = "";
+      }
+      function flip () {
+        //reveals the content of the tile by changing the font color when the tile is clicked
+      }
+      function compare () {
+        //decides if the pair of tiles match and calls the hide function if needed
+      }
+      function hide () {
+        //changes the style of the tiles to hide the content if they do not match
       }
   </script>
 </body>
