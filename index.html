@@ -77,15 +77,30 @@
         document.getElementById("gameBox").innerHTML = "";
       }
       function flip (event) {
-        //reveals the content of the tile by changing the class from initial to trial
-       console.log(event.target);
-      }
+        //reveals the content of the tile by changing the class from initial to trial, then checks how many elements of the trial class there are.  When there are 2 (the nodelist length is 2) call the compare function.
+       event.target.setAttribute("class", "trial");
+       var howMany = document.getElementsByClassName("trial").length;
+       console.log(howMany);
+       //if howMany = 2 {
+        //compare;
+       }
+      
       function compare () {
-        //when there are two elements with the trial class, then check their contents to see if they match.  if they match, change the class of those elements to matched, otherwise change them to initial.
-        //this function might just need to run in the background, or is called when a counter on flip reaches 2, then resets the counter?
+        //check the contents of the each element in the trial class to see if they match.  if they match, change the class of those elements to matched, otherwise change them to initial.
+
       }
       function hide () {
         //changes the style of the tiles to hide the content if they do not match
+        var wrong = document.getElementsByClassName("trial");
+        wrong[0].setAttribute("class", "initial");
+        wrong[0].setAttribute("class", "initial");
+        }
+      
+      function match () {
+        //this function gets called when there is a match, it will set the class of the tiles from trial to matched so they won't be affected by the hidhide anymore
+        var right = document.getElementsByClassName("trial");
+        right[0].setAttribute("class", "matched");
+        right[0].setAttribute("class", "matched");
       }
   </script>
 </body>
