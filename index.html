@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="matchinggame.css">
   <!link rel="javascript" href="matchinggame.js">
 </head>
+
 <body>
   <div id="instructions">
     <h1> Matching Game </h1>
@@ -27,8 +28,8 @@
 
   <script>
       //The number of tiles should be an even number, obvi
-      var numTiles = 4;
-      var list = [];
+      var numTiles = 16;
+      var numberList = [];
 
       function restart() {
         //Launches necessary functions when the button is clicked
@@ -58,19 +59,19 @@
         return divi ;
       }
       function makeList () {
-        //Populates the list with values
+        //Populates the numberList with values
         for (var i = 1; i <= (numTiles/2); i++) {
-          list.push (i);
-          list.push (i);
+          numberList.push (i);
+          numberList.push (i);
         }
       }
       function shuffle () {
         //Shuffles the values in the list array
-        list.sort(function(a, b){return 0.5 - Math.random()});
+        numberList.sort(function(a, b){return 0.5 - Math.random()});
       }
       function pick () {
         //returns the value of the first item on the list and returns its value
-        return list.shift();
+        return numberList.shift();
       }
       function kill () {
         //Deletes the divs in the gameBox
@@ -81,27 +82,35 @@
        event.target.setAttribute("class", "trial");
        var howMany = document.getElementsByClassName("trial").length;
        console.log(howMany);
-       //if howMany = 2 {
-        //compare;
+       if (howMany >= 2) {
+        compare();
        }
-      
+      }
       function compare () {
         //check the contents of the each element in the trial class to see if they match.  if they match, change the class of those elements to matched, otherwise change them to initial.
-
+        var trialList = document.getElementsByClassName("trial");
+        var first = trialList[0].childNodes[0].nodeValue;
+        var second = trialList[1].childNodes[0].nodeValue;
+        if (first == second) {
+          match();
+        }
+        else {
+          hide();
+        }
       }
       function hide () {
         //changes the style of the tiles to hide the content if they do not match
         var wrong = document.getElementsByClassName("trial");
         wrong[0].setAttribute("class", "initial");
         wrong[0].setAttribute("class", "initial");
-        }
-      
+      }
       function match () {
         //this function gets called when there is a match, it will set the class of the tiles from trial to matched so they won't be affected by the hidhide anymore
         var right = document.getElementsByClassName("trial");
         right[0].setAttribute("class", "matched");
         right[0].setAttribute("class", "matched");
       }
+    
   </script>
 </body>
 </html>

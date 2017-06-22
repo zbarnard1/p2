@@ -33,7 +33,7 @@ button {
 /* Main Game Window */
 
 #gameBox {
-  border: red solid 20px;
+  border: purple solid 40px;
   height: 500px;
   width: 500px;
   margin: auto;
@@ -69,6 +69,7 @@ button {
 
 .matched{
   color: green;
+  background-color: lavender;
 }
 
 .trial{
