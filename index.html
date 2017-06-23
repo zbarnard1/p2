@@ -7,15 +7,15 @@
   <meta viewport="width=device-width">
   <meta name="name" content="author=Zac Barnard">
   <link rel="stylesheet" href="matchinggame.css">
-  <!link rel="javascript" href="matchinggame.js">
+  <script src="matchinggame.js"></script>
 </head>
 
 <body>
   <div id="instructions">
-    <h1> Matching Game </h1>
+    <h1> Concentration </h1>
     <div id="words">
       <p> 
-        This game tests your memory!  Click on a tile below to reveal the number on the tile.  Once you click the "Start" Button, you will have a couple seconds to memorize the locations of each number.  Try to pair up each set of numbers in the fewest possible moves.  Good luck!
+        This game tests your memory!  Click on a tile below to reveal the number on the tile.  Once you click the "Start" Button, you will have a one second to memorize the locations of each number.  Try to match up each pair of numbers in as few moves as you can.  Good luck!
       </p>
     </div>
     <div id="btn">
@@ -25,92 +25,6 @@
     
   <div id="gameBox">
   </div>
-
-  <script>
-      //The number of tiles should be an even number, obvi
-      var numTiles = 16;
-      var numberList = [];
-
-      function restart() {
-        //Launches necessary functions when the button is clicked
-        kill();
-        makeList();
-        shuffle();
-        makeLoop(numTiles);
-      }
-      function appendToHtml (thing) {
-        //this function will take whatever is passed to it and add it to the html in my game window
-        var at = document.getElementById("gameBox");
-        at.appendChild(thing);
-      }
-      function makeLoop (n) {
-        //loops to create 'n' tiles
-        for ( i = 0; i < n; i++) {
-        appendToHtml(tileMake(pick()));
-        }
-      }
-      function tileMake (foo){
-        //returns a div element with whatever string is passed to it as the content, the string comes from the pick function
-        var divi = document.createElement("div");
-        var inside = document.createTextNode(foo);
-        divi.addEventListener("click", flip, true);
-        divi.setAttribute("class", "initial");
-        divi.appendChild(inside);
-        return divi ;
-      }
-      function makeList () {
-        //Populates the numberList with values
-        for (var i = 1; i <= (numTiles/2); i++) {
-          numberList.push (i);
-          numberList.push (i);
-        }
-      }
-      function shuffle () {
-        //Shuffles the values in the list array
-        numberList.sort(function(a, b){return 0.5 - Math.random()});
-      }
-      function pick () {
-        //returns the value of the first item on the list and returns its value
-        return numberList.shift();
-      }
-      function kill () {
-        //Deletes the divs in the gameBox
-        document.getElementById("gameBox").innerHTML = "";
-      }
-      function flip (event) {
-        //reveals the content of the tile by changing the class from initial to trial, then checks how many elements of the trial class there are.  When there are 2 (the nodelist length is 2) call the compare function.
-       event.target.setAttribute("class", "trial");
-       var howMany = document.getElementsByClassName("trial").length;
-       console.log(howMany);
-       if (howMany >= 2) {
-        compare();
-       }
-      }
-      function compare () {
-        //check the contents of the each element in the trial class to see if they match.  if they match, change the class of those elements to matched, otherwise change them to initial.
-        var trialList = document.getElementsByClassName("trial");
-        var first = trialList[0].childNodes[0].nodeValue;
-        var second = trialList[1].childNodes[0].nodeValue;
-        if (first == second) {
-          match();
-        }
-        else {
-          hide();
-        }
-      }
-      function hide () {
-        //changes the style of the tiles to hide the content if they do not match
-        var wrong = document.getElementsByClassName("trial");
-        wrong[0].setAttribute("class", "initial");
-        wrong[0].setAttribute("class", "initial");
-      }
-      function match () {
-        //this function gets called when there is a match, it will set the class of the tiles from trial to matched so they won't be affected by the hidhide anymore
-        var right = document.getElementsByClassName("trial");
-        right[0].setAttribute("class", "matched");
-        right[0].setAttribute("class", "matched");
-      }
-    
-  </script>
+  
 </body>
 </html>

@@ -10,7 +10,9 @@ h1 {
   text-align: center;
 }
 
-p {
+#words {
+  width: 60%;
+  margin: auto;
   text-align: center;
   font-size: 24px;
 }
@@ -21,15 +23,12 @@ p {
   justify-content: center;
   margin-bottom: 15px;
 }
+
 button {
   height: 75px;
   width: 150px;
 }
-/* Instructions */
-#words {
-  width: 60%;
-  margin: auto;
-}
+
 /* Main Game Window */
 
 #gameBox {
@@ -62,8 +61,8 @@ button {
 /* The element to apply the animation to */
 .initial{
     animation-name: fadeOut;
-    animation-delay: 1s;
-    animation-duration: 1s;
+    animation-delay: .5s;
+    animation-duration: .5s;
     animation-fill-mode: forwards;
 }
 
