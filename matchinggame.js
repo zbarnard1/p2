@@ -1,23 +1,94 @@
 //This is the Javascript file for "Project 2 - Javascript Matching Game"
+      var numTiles = 16;
+      var numberList = [];
+      var selected = [];
 
+      function restart() {
+        kill();
+        makeList();
+        shuffle();
+        makeLoop(numTiles);
+      }
 
- 
-/* Generic Tile
-  //tile x
-  //tile y
-  //tile size (constant, they're square)
-  //tile back image, eventually 
-*/
+      function appendToHtml (thing) {
+        var at = document.getElementById("gameBox");
+        at.appendChild(thing);
+      }
 
-//this function builds the tiles, 
-var Tile = function (x, y,)
-{
-  this.x = x;
-  this.y = y;
-  this.width = 70px;
-  fill(214, 247, 202);
-  strokeWeight(2);
-  rect(this.x, this.y, this.width, this.width, 10);
-};
+      function makeLoop (n) {
+        for ( i = 0; i < n; i++) {
+        appendToHtml(tileMake(pick()));
+        }
+      }
 
-var testTile = new Tile(50, 50)
+      function tileMake (foo){
+        var divi = document.createElement("div");
+        var inside = document.createTextNode(foo);
+        divi.addEventListener("click", flip, true);
+        divi.setAttribute("class", "initial");
+        divi.appendChild(inside);
+        return divi ;
+      }
+
+      function makeList () {
+        for (var i = 1; i <= (numTiles/2); i++) {
+          numberList.push (i);
+          numberList.push (i);
+        }
+      }
+
+      function shuffle () {
+        numberList.sort(function(a, b){return 0.5 - Math.random()});
+      }
+
+      function pick () {
+        return numberList.shift();
+      }
+
+      function kill () {
+        document.getElementById("gameBox").innerHTML = "";
+      }
+
+      function flip (event) {
+        var clicked = event.target;
+        clicked.setAttribute("class", "trial");
+        if (!selected.find(finder, clicked)) {
+          selected.push(clicked);
+        }
+        howMany();
+      }
+
+      function howMany () {       
+        if (selected.length > 1) {
+          compare();
+        }
+      }
+
+      function finder (a) {
+        return a===this;
+      }
+
+      function compare () {
+        var first = selected[0].childNodes[0].nodeValue;
+        var second = selected[1].childNodes[0].nodeValue;
+        if (first == second) {
+          match();
+        }
+        else {
+          setTimeout(hide, 0);
+        }
+      }
+
+      function hide () {
+        var item = selected.shift();
+        while (item){
+          item.setAttribute("class", "initial");
+          item = selected.shift();
+        }
+      }
+
+      function match () {
+        var loops = selected.length;
+        for (i=0; i < loops; i++)
+          selected.shift().setAttribute("class", "matched");
+        }
